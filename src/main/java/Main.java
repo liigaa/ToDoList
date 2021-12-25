@@ -1,7 +1,9 @@
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    Manager myList = new Manager();
+    Manager myTask = new Manager();
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -27,25 +29,26 @@ public class Main {
                     options[0]);
             switch (taskOption) {
                 case "Create task":
-                    JOptionPane.showMessageDialog(null, myList.addList());
+                    JOptionPane.showMessageDialog(null, myTask.addTask());
                     break;
                 case "View all tasks":
-                    JOptionPane.showMessageDialog(null, myList.getLists());
+                    List<String> taskStrings = myTask.getTasks().stream().map(x->x.toString()).toList();
+                    JOptionPane.showMessageDialog(null, String.join(",\n", taskStrings));
                     break;
                 case "Update task":
-                    JOptionPane.showMessageDialog(null, myList.updateTask());
+                    JOptionPane.showMessageDialog(null, myTask.updateTask());
                     break;
                 case "Update status":
-                    JOptionPane.showMessageDialog(null, myList.updateTaskStatus());
+                    JOptionPane.showMessageDialog(null, myTask.updateTaskStatus());
                     break;
                 case "Update title":
-                    JOptionPane.showMessageDialog(null, myList.updateTitle());
+                    JOptionPane.showMessageDialog(null, myTask.updateTitle());
                     break;
                 case "Update description":
-                    JOptionPane.showMessageDialog(null, myList.updateDescription());
+                    JOptionPane.showMessageDialog(null, myTask.updateDescription());
                     break;
                 case "Remove task":
-                    JOptionPane.showMessageDialog(null, myList.removeTask());
+                    JOptionPane.showMessageDialog(null, myTask.removeTask());
                     break;
                 default:
                     break;
