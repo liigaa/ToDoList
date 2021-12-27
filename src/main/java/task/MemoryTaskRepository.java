@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class MemoryTaskRepository implements TaskRepository {
     private ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> activeTasks = new ArrayList<>();
 
     @Override
     public void create(Task task){
@@ -21,6 +22,11 @@ public class MemoryTaskRepository implements TaskRepository {
     @Override
     public ArrayList<Task> getAll() {
         return tasks;
+    }
+
+    @Override
+    public ArrayList<Task> getActive() {
+        return activeTasks;
     }
 
     @Override
