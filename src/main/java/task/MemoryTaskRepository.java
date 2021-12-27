@@ -1,11 +1,15 @@
+package task;
+
 import java.util.ArrayList;
 
-public class TaskRepository {
+public class MemoryTaskRepository implements TaskRepository {
     private ArrayList<Task> tasks = new ArrayList<>();
 
+    @Override
     public void create(Task task){
         this.tasks.add(task);
     }
+
 
     public Task findTask(String title){
         for(Task list: tasks){
@@ -14,20 +18,22 @@ public class TaskRepository {
             }
         }return null;
     }
+    @Override
     public ArrayList<Task> getAll() {
         return tasks;
     }
 
+    @Override
     public void update(Task task){
         Task taskToUpdate = findTask(task.getTitle());
         if(taskToUpdate == task){
             return;
         }
         taskToUpdate.setDescription(task.getDescription());
-        taskToUpdate.setCompleted(task.getCompleted());
-
+        taskToUpdate.setStatus(task.getStatus());
     }
 
+    @Override
     public void delete(String title){
         Task taskToRemove = findTask(title);
         tasks.remove(taskToRemove);

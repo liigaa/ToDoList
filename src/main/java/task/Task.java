@@ -1,13 +1,17 @@
+package task;
+
+import javax.swing.*;
+
 public class Task {
 
     private String title;
     private String description;
-    private String completed;
+    private String status;
 
-    public Task(String title, String description, String completed) {
+    public Task(String title, String description, String status) {
         this.title = title;
         this.description = description;
-        this.completed = completed;
+        this.status = status;
     }
 
     public String getTitle() {
@@ -26,18 +30,18 @@ public class Task {
         this.description = description;
     }
 
-    public String getCompleted() {
-        return completed;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCompleted(String completed) {
-        this.completed = completed;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return  title +
-                " " + description  +
-                " status " + completed;
+        return  "Task: " + title +
+                "; Description: " + description  +
+                "; Status " + status;
     }
 }

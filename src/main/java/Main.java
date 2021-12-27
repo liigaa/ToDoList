@@ -1,5 +1,7 @@
+import task.Manager;
+
 import javax.swing.*;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
@@ -15,9 +17,8 @@ public class Main {
 
         do {
             String[] options = {
-                    "Select...", "Create task", "View all tasks", "Update task", "Update title",
-                    "Update description","Update status",
-                    "Remove task", "Exit"};
+                    "Select...", "Create task", "View all tasks", "Update task",
+                    "Delete task", "Exit"};
             taskOption = (String) JOptionPane.showInputDialog(null, """
                             Welcome to TODO List!
                             Please select choice
@@ -36,18 +37,13 @@ public class Main {
                     JOptionPane.showMessageDialog(null, String.join(",\n", taskStrings));
                     break;
                 case "Update task":
-                    JOptionPane.showMessageDialog(null, myTask.updateTask());
+                    try {
+                        JOptionPane.showMessageDialog(null, myTask.updateTask());
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
-                case "Update status":
-                    JOptionPane.showMessageDialog(null, myTask.updateTaskStatus());
-                    break;
-                case "Update title":
-                    JOptionPane.showMessageDialog(null, myTask.updateTitle());
-                    break;
-                case "Update description":
-                    JOptionPane.showMessageDialog(null, myTask.updateDescription());
-                    break;
-                case "Remove task":
+                case "Delete task":
                     JOptionPane.showMessageDialog(null, myTask.removeTask());
                     break;
                 default:
